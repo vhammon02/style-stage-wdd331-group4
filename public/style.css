@@ -109,7 +109,6 @@ body {
   display: flex;
   flex-wrap: wrap;
   margin: 0;
-  margin: 1.5rem;
 }
 body > header {
   width: 100%;
@@ -119,14 +118,13 @@ body nav {
   width: 100%;
 }
 body #about, body #guidelines, body #contribute > section {
-  width: calc(100% - 100px);
-  margin-left: 50px;
+  width: 100%;
 }
 body main footer {
   margin-right: 0;
 }
 body aside {
-  width: 50%;
+  width: 100%;
   margin: 0;
 }
 body aside.profile {
@@ -147,10 +145,10 @@ body footer.page-footer {
 }
 @media (min-width: 1024px) {
   body {
-    margin: 100px;
+    margin: 1.5rem;
   }
   body > header {
-    margin-left: 50px;
+    margin-left: 0;
     width: 100%;
   }
   body nav {
@@ -158,11 +156,11 @@ body footer.page-footer {
     clip-path: polygon(calc(100% - 50px) 100%, 50px 100%, 0% 0%, 100% 0%);
   }
   body main {
-    width: calc(100% - 50px);
-    margin-left: 20px;
+    width: calc(100% - 100px);
+    margin-left: 50px;
   }
   body aside {
-    width: 100%;
+    width: 50%;
     margin: 0;
   }
   body aside.profile {
@@ -172,8 +170,8 @@ body footer.page-footer {
     clip-path: polygon(0 0%, 0% 100%, 100% 100%, calc(100% - 35px) 0%);
   }
   body footer.page-footer {
-    margin-left: 50px;
-    width: calc(100% - 50px);
+    margin-left: 0;
+    width: 100%;
   }
 }
 svg {
@@ -222,41 +220,28 @@ body::after {
   overflow: hidden;
 }
 
-#container::before {
+main::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.35) 0px, rgba(0, 0, 0, 0.35) 2px, transparent 2px, transparent 4px), radial-gradient(ellipse at center, rgba(64, 145, 238, 0.08) 0%, rgba(0, 0, 0, 0.45) 90%);
+  background: repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.35) 0px, rgba(0, 0, 0, 0.15) 2px, transparent 2px, transparent 4px), radial-gradient(ellipse at center, rgba(64, 145, 238, 0.08) 0%, rgba(0, 0, 0, 0.25) 90%);
   pointer-events: none;
-  width: 100vw;
-  height: 100%;
-  margin-left: 50px;
-  margin-bottom: 70px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 body {
   position: relative;
 }
 
-#main:before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  width: calc(100% - 150px);
-  margin-left: 75px;
-  margin-top: 540px;
-  height: 115vh;
-  background: repeating-linear-gradient(to bottom, rgba(22, 34, 27, 0.15) 0px, rgba(0, 0, 0, 0.3) 2px, transparent 2px, transparent 4px), radial-gradient(ellipse at center, rgba(44, 120, 155, 0.08) 0%, rgba(255, 255, 255, 0) 90%);
-  pointer-events: none;
-}
-
-@media (max-width: 1020px) {
-  body {
+@media (max-width: 1080px) {
+  main {
     background-color: var(--color-background);
   }
-  body::before {
+  main::before {
     content: "";
     position: fixed;
     inset: 0;
@@ -264,7 +249,7 @@ body {
     background: repeating-linear-gradient(to bottom, rgba(22, 34, 27, 0.15) 0px, rgba(0, 0, 0, 0.3) 2px, transparent 2px, transparent 4px), radial-gradient(ellipse at center, rgba(44, 120, 155, 0.08) 0%, rgba(255, 255, 255, 0) 90%);
     pointer-events: none;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     margin: 0;
   }
 }
@@ -285,7 +270,7 @@ body {
 }
 
 header {
-  padding: 1.5rem;
+  padding: 0.75rem 0.25rem;
   border: none;
   text-align: left;
   background-color: var(--color-primary);
@@ -301,7 +286,6 @@ header .container {
   justify-content: center;
   width: 100%;
   max-width: 100%;
-  padding: 1em;
 }
 header h2 {
   font-size: clamp(0.875rem, 4vw, 1.5rem);
@@ -320,7 +304,7 @@ header a:not(.link-github):hover, header a:not(.link-github):focus {
 }
 header h1 {
   display: block;
-  padding-bottom: 0.15em;
+  padding-bottom: 1rem;
   margin-bottom: 0;
   white-space: nowrap;
   font-size: clamp(1.25rem, 13vw, 2.75rem);
@@ -513,8 +497,7 @@ header .link-github svg path {
   display: flex;
   flex-direction: column;
   min-width: 0;
-  max-width: calc(100%-100px);
-  padding: 1em;
+  max-width: 100%;
 }
 
 main {
@@ -525,6 +508,7 @@ main {
   max-width: 100%;
   overflow-wrap: break-word;
   word-break: break-word;
+  position: relative;
 }
 @media (min-width: 480px) {
   main {
@@ -697,16 +681,16 @@ main li {
     padding: 1rem 0;
   }
   #about .container:nth-child(1) {
-    padding: 3rem;
+    padding: 1rem;
   }
   #about .container:nth-child(2) {
-    padding: 3rem;
+    padding: 1rem;
   }
   #about .container:last-of-type::after {
     content: none;
     display: none;
     height: 0;
-    margin: 10;
+    margin: 0;
     background: none;
   }
   #about::after {
@@ -770,7 +754,7 @@ main li {
   }
 }
 #contribute > section {
-  padding: 100px;
+  padding: 1.5rem;
 }
 
 #files {
@@ -845,8 +829,8 @@ main li {
 }
 @media (max-width: calc(1024px - 1px)) {
   .page-footer {
-    background-color: #282626;
-    color: #17e617;
+    background-color: #000000;
+    color: #ffff00;
   }
 }
 .page-footer div {
@@ -870,26 +854,47 @@ main li {
     flex-direction: column;
     gap: 2rem;
     list-style: none;
+    margin: 0;
+    list-style: none;
+    /* On list hover: switch animation name so all arrows restart from 0% (in sync) */
+    /* On list hover: switch animation name so all arrows restart from 0% (in sync) */
+  }
+  .page-footer ul:hover li::before {
+    animation-name: arcade-nudge-sync;
+    animation-play-state: paused;
+  }
+  .page-footer ul {
+    /* The hovered item’s arrow runs (faster) */
+  }
+  .page-footer ul li:hover::before {
+    animation-play-state: running;
+    animation-duration: 0.5s;
+  }
+  .page-footer ul ul {
+    list-style: none;
     padding: 0;
     margin: 0;
   }
-}
-.page-footer ul li {
-  text-decoration: none;
-}
-@media (max-width: calc(1024px - 1px)) {
   .page-footer ul li {
+    padding: 0.25em 0.5em;
+    margin: 0 -0.4em;
+    transition: color 0.15s ease;
     display: flex;
-    flex-direction: column;
     align-items: center;
   }
-}
-@media (max-width: calc(1024px - 1px)) {
+  .page-footer ul li:hover {
+    color: #ff1717;
+  }
+  .page-footer ul li:hover::before {
+    color: #ff1717;
+  }
   .page-footer ul li::before {
     content: "▶";
-    margin-right: 0.75rem;
     display: inline-block;
-    animation: arcade-nudge 3s steps(1) infinite;
+    animation: arcade-nudge 2.5s steps(1) infinite;
+    color: #ffff00;
+    width: 1.5rem;
+    flex-shrink: 0;
   }
 }
 .page-footer p {
@@ -899,6 +904,9 @@ main li {
   list-style-type: none;
   text-decoration: none;
   color: inherit;
+}
+.page-footer a svg {
+  fill: #ffff00;
 }
 
 aside {
